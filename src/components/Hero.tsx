@@ -8,8 +8,6 @@ export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
@@ -18,8 +16,6 @@ export default function Hero() {
       } else {
         setHasScrolled(false);
       }
-      
-      lastScrollY = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll);

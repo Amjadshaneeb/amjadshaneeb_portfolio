@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import {
   motion,
-  useScroll,
-  useTransform,
   AnimatePresence,
 } from "framer-motion";
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
@@ -47,18 +45,6 @@ export default function Projects() {
     }, 4000);
     return () => clearInterval(interval);
   }, [isPaused, projects.length]);
-
-  const { scrollYProgress } = useScroll({
-    target: carouselRef,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.7, 1],
-    [0.8, 1, 1, 0.8],
-  );
 
   const nextProject = () =>
     setCurrentIndex((prev) => (prev + 1) % projects.length);
