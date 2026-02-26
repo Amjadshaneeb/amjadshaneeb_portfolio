@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Code, Smartphone, Globe, Database, ChevronDown } from 'lucide-react';
+import { ArrowRight, Zap, Code, Smartphone, Database, ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });

@@ -35,7 +35,7 @@ const mockProjects = [
     name: "Agthia Restaurant Seat Booking",
     problem_statement: "A production-grade Flutter app enabling restaurant seat booking through website integration, with a fully customizable admin-controlled interface.",
     tech_stack: "Flutter, Dart, Firebase",
-    image_url: "public/uploads/agthia.png",
+    image_url: "/uploads/agthia.png",
     live_url: "https://github.com/Amjadshaneeb/Agthia_App.git",
     project_type: "mobile",
     order_index: 1
