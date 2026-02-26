@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { saveContactSubmission } from '../services/contactService';
 
 export function Contact() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -18,19 +19,36 @@ export function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => {
-      setStatus('success');
-      // Clear form fields after successful submission
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
+    
+    console.log('Submitting form data:', formData);
+    
+    try {
+      const result = await saveContactSubmission(formData);
+      console.log('Save result:', result);
+      
+      if (result.success) {
+        setStatus('success');
+        console.log('✅ Contact submission saved successfully');
+        // Clear form fields after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+        console.error('❌ Submission failed:', result.error);
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch (error) {
+      setStatus('error');
+      console.error('❌ Unexpected error:', error);
       setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
+    }
   };
 
   return (
@@ -134,7 +152,7 @@ export function Contact() {
                 )}
                 {status === 'error' && (
                   <>
-                    <AlertCircle size={18} className="text-red-600" /> Transmission Failed
+                    <AlertCircle size={18} className="text-red-600" /> Transmission Failed - Check Console
                   </>
                 )}
               </button>
