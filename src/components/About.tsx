@@ -59,7 +59,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-32 bg-black scroll-mt-24"
+      className="relative py-32 bg-black"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">

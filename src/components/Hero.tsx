@@ -79,24 +79,17 @@ export default function Hero() {
         }} />
       </div>
 
-      {/* Floating Orbs */}
+      {/* Floating Code Symbols */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 text-6xl md:text-8xl font-mono font-bold text-red-500/30 blur-sm"
         animate={{
           x: mousePosition.x * 100,
           y: mousePosition.y * 100,
         }}
         transition={{ type: "spring", stiffness: 50, damping: 30 }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
-        animate={{
-          x: mousePosition.x * -100,
-          y: mousePosition.y * -100,
-        }}
-        transition={{ type: "spring", stiffness: 50, damping: 30 }}
-      />
-
+      >
+        &lt;/&gt;
+      </motion.div>
       {/* Content Container - Modern Layout */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 lg:pt-48 lg:pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -227,19 +220,15 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </motion.div>
 
-            {/* Floating Cards */}
+            {/* Floating Code Cards */}
             <motion.div 
               animate={{ y: [0, 15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -left-12 top-1/4 z-20 bg-black/80 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-xl hidden sm:block"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                  <Globe className="w-5 h-5 text-cyan-400" />
-                </div>
-                <div>
-                  <div className="text-xs text-gray-400">Security</div>
-                  <div className="text-sm font-bold">Clean Code</div>
+                <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
+                  <span className="text-red-400 font-mono font-bold text-sm">&lt;/&gt;</span>
                 </div>
               </div>
             </motion.div>
@@ -250,12 +239,8 @@ export default function Hero() {
               className="absolute -right-8 bottom-1/4 z-20 bg-black/80 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-xl hidden sm:block"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
-                  <Globe className="w-5 h-5 text-purple-400" />
-                </div>
-                <div>
-                  <div className="text-xs text-gray-400">Global</div>
-                  <div className="text-sm font-bold">Mobile First</div>
+                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                  <span className="text-green-400 font-mono font-bold text-sm">//</span>
                 </div>
               </div>
             </motion.div>

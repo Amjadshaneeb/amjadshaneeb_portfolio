@@ -40,10 +40,13 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   };
 
   const handleDownloadCV = () => {
@@ -57,7 +60,9 @@ export default function Navbar() {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 py-4'
+          ? activeSection === 'projects'
+            ? 'bg-gray-900/80 backdrop-blur-xl border-b border-white/10 py-4'
+            : 'bg-black/80 backdrop-blur-xl border-b border-white/10 py-4'
           : 'bg-transparent py-6'
       }`}
       initial={{ y: -100 }}

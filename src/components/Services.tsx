@@ -17,32 +17,14 @@ export default function Services() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const res = await fetch('/api/services');
-        if (res.ok) {
-          const data = await res.json();
-          setServices(data);
-        } else {
-          // Use mock data if API fails
-          console.warn("API not available, using mock data");
-          setServices(mockServices);
-        }
-      } catch (err) {
-        console.error('Error fetching services:', err);
-        // Use mock data as fallback
-        console.log("Using mock data as fallback");
-        setServices(mockServices);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchServices();
+    // Use mock data directly
+    setServices(mockServices);
+    setLoading(false);
   }, []);
 
   if (loading) {
     return (
-      <section id="services" className="py-32 bg-gradient-to-b from-black to-gray-900 scroll-mt-24">
+      <section id="services" className="py-32 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <div className="animate-pulse h-8 w-48 bg-gray-800 rounded mx-auto mb-4" />
@@ -61,14 +43,8 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-32 bg-gradient-to-b from-black to-gray-900 scroll-mt-24 overflow-hidden"
+      className="relative py-32 bg-gradient-to-b from-black to-gray-900"
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
