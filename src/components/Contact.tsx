@@ -52,7 +52,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 relative scroll-mt-24">
+    <section id="contact" className="py-32 relative scroll-mt-16">
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
